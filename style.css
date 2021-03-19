@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+
+
 body{
     overflow-x: hidden;
     background-color: black;
@@ -8,6 +12,7 @@ body{
     
     
 }
+
 .harshad{
     
     font-family: 'Poppins', sans-serif;
@@ -49,6 +54,7 @@ body{
     background-image: url(assets/img/photo_2021-03-15_21-44-48.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Raleway',sans-serif;
 }
 input[type=text], select, textarea {
     width: 100%; /* Full width */
@@ -91,3 +97,4 @@ input[type=text], select, textarea {
 .card{
   height: fit-content;
 }
+
