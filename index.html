@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     <title>Mycks45</title>
     <link rel="icon" href="assets/img/logo3_18_1257.png" type="image/gif" sizes="16x16">
@@ -180,7 +180,7 @@
         <div class="align-items-center">
             
             <div class="container bg-dark">
-              <form id="submit-form"  name="myForm" method="POST"  action="https://script.google.com/macros/s/AKfycbxV7sCAU8CVa87p8vgDhtnC6oSziqV-HE7UFJPYflcX2S54A9O0pTwJkmoqz-1pCA4d/exec">
+              <form id="submit-form"  action="">
                 <div class="form-row">
                   <div class="form-group col-md-6 text-white">
                     <label for="fname">Name</label>
@@ -272,6 +272,27 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
   <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/additional-methods.js"></script>
   <script src="validate.js"></script>
+  <script>
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbz4p9fdPpO94pNa-HT_4hv6-YdFnqex4Yhv5SnqpRQ26R2QU2JHmGwitC9f2sPlfiPx/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                // window.location.reload()
+                window.location.href="https://www.instagram.com/harshadbabu/"
+            },
+            error:function (err){
+                alert("Something Error")
+
+            }
+        })
+    })
+</script>
+
+
   
   </body>
 
