@@ -1,29 +1,38 @@
-// $.validator.addMethod("alpha", function(value, element) {
-//     return this.optional(element) || value == value.match(/^[a-zA-Z\s]+$/);
-// }, "Letters only");
+$.validator.addMethod("alpha", function(value, element) {
+    return this.optional(element) || value == value.match(/^[a-zA-Z\s]+$/);
+}, "Letters only");
 
 
-// $(document).ready(function(){
-//     $("#submit-form").validate({
-//         rules:{
-//            fname:{
-//             alpha: true
-//            },
-//            emailAdderss:{
-//                email: true
-//            },
-//            Mobile:{
-//                Number: true,
-//                minlength:10
-//            },
-//            place:{
-//                maxlength:20
-//            }
+$(document).ready(function(){
+    $("#submit-form").validate({
+        rules:{
+           fname:{
+            required: true,
+            alpha: true
+            
+           },
+           emailAdderss:{
+               email: true,
+               required:true
+           },
+           Mobile:{
+               Number: true,
+               minlength:10,
+               required:true
+           },
+           place:{
+               maxlength:20,
+               required:true
+           }
 
 
-//         }
-//     })
-// })
+        }
+    })
+    $("submit-form").submit(function(e){
+        alert('submit intercepted');
+        e.preventDefault(e);
+    });
+})
 
 // $("#submit-form").submit((e)=>{
 //     e.preventDefault()

@@ -13,6 +13,15 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  
    
     
     
@@ -22,7 +31,7 @@
   
   
  
-
+  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
 
     <header id="header" class="d-flex flex-column justify-content-center">
 
@@ -184,7 +193,10 @@
                 <div class="form-row">
                   <div class="form-group col-md-6 text-white">
                     <label for="fname">Name</label>
-                    <input type="text" class="form-control" id="name" name="fname" pattern="[a-zA-Z0-9\s]+" placeholder="FULL NAME" required>
+                    <input type="text" class="form-control" id="name" name="name" pattern="[a-zA-Z\s]+" placeholder="FULL NAME" onblur="nameValid()" required >
+                    <span id="nameReq" style="color: red; display: none; padding-top: .5rem;">Field Required</span>
+                    <span id="nameErr" style="color: red; display: none; padding-top: .5rem;">Only letters are allowed</span>
+                    <span id="nameLen" style="color: red; display: none; padding-top: .5rem;">Minimum 4 characters required</span>
                   </div>
                   <div class="form-group col-md-6 text-white">
                     <label for="place">Place</label>
@@ -203,7 +215,7 @@
                 </div>
                 <div class="form-group text-white">
                   <label for="inputAddress2">Address</label>
-                  <input type="text" class="form-control" id="inputAddress2" name="address" placeholder="Home Address" required>
+                  <input type="text" class="form-control" id="inputAddress2" name="address" placeholder="Home Address">
                 </div>
                 <div class="form-group text-white">
                   <label for="inputAddress2" >Comments</label>
@@ -265,24 +277,65 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
    
-    
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
     
   
   
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
-  <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/additional-methods.js"></script>
-  <script src="validate.js"></script>
-  <script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script> -->
+  <!-- <script src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/additional-methods.js"></script> -->
+  <!-- <script src="validate.js"></script> -->
+<script>
+  function nameValid() {
+      var text = document.getElementById("name").value;
+      var letters = /^[A-Za-z]+$/;
+
+      if (document.getElementById("name").value == "") {
+        document.getElementById("nameReq").style.display = "block";
+        document.getElementById("nameLen").style.display = "none";
+        document.getElementById("nameErr").style.display = "none";
+      } else if (!text.match(letters)) {
+        document.getElementById("nameErr").style.display = "block";
+        document.getElementById("nameReq").style.display = "none";
+        document.getElementById("nameLen").style.display = "none";
+
+      }
+      else if (text.length < 5) {
+        document.getElementById("nameLen").style.display = "block";
+        document.getElementById("nameReq").style.display = "none";
+        document.getElementById("nameErr").style.display = "none";
+      }
+      else {
+        document.getElementById("nameReq").style.display = "none";
+        document.getElementById("nameLen").style.display = "none";
+        document.getElementById("nameErr").style.display = "none";
+
+      }
+    }
+</script>
+
+
+<script>
+    
     $("#submit-form").submit((e)=>{
-        e.preventDefault()
+      e.preventDefault();
         $.ajax({
             url:"https://script.google.com/macros/s/AKfycbz4p9fdPpO94pNa-HT_4hv6-YdFnqex4Yhv5SnqpRQ26R2QU2JHmGwitC9f2sPlfiPx/exec",
             data:$("#submit-form").serialize(),
             method:"post",
             success:function (response){
                 alert("Form submitted successfully")
-                // window.location.reload()
-                window.location.href="https://www.instagram.com/harshadbabu/"
+                window.location.reload()
+                // window.location.href="https://www.instagram.com/harshadbabu/"
             },
             error:function (err){
                 alert("Something Error")
@@ -290,6 +343,31 @@
             }
         })
     })
+</script>
+
+<script>
+    // Navigation active state on scroll
+    var nav_sections = $('section');
+  var main_nav = $('.nav-menu, #mobile-nav');
+
+  $(window).on('scroll', function() {
+    var cur_pos = $(this).scrollTop() + 300;
+
+    nav_sections.each(function() {
+      var top = $(this).offset().top,
+        bottom = top + $(this).outerHeight();
+
+      if (cur_pos >= top && cur_pos <= bottom) {
+        if (cur_pos <= bottom) {
+          main_nav.find('li').removeClass('active');
+        }
+        main_nav.find('a[href="#' + $(this).attr('id') + '"]').parent('li').addClass('active');
+      }
+      if (cur_pos < 200) {
+        $(".nav-menu ul:first li:first").addClass('active');
+      }
+    });
+  });
 </script>
 
 
